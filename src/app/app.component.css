@@ -1,0 +1,16 @@
+mat-icon, h2 { color: white;}
+.navbar-brand{font-size: 24px;}
+
+.upload-container mat-icon {
+  color: #427cfe;
+  margin-right: 10px;
+}
+
+h4{
+  font-size: 1.3rem;
+  color: #6b6969;
+}
+
+.upload {
+  margin: 10px;
+}

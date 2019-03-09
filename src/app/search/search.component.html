@@ -1,0 +1,44 @@
+<div class="form-inline">
+  <div class="form-group">
+
+      <input type="text"
+             class="form-control"
+             [placeholder]="searchPlaceholder"
+             [(ngModel)]="searchValue"
+      />
+  </div>
+
+    <select class="custom-select" (change)="changeCriteria($event.target.value)">
+      <option value="select">Select</option>
+      <option value="stadium">Stadium</option>
+      <option value="team">Team</option>
+    </select>
+</div>
+
+
+<div class="filter-result">
+    <ul *ngIf="data">
+      <li *ngFor="let c of data | filter:searchValue:searchField">
+        <div [ngSwitch]="searchField">
+
+          <ng-template ngSwitchCase="stadium">
+            <span class="label"><mat-icon>place</mat-icon></span>
+            <span class="stadium">{{c.stadium}}</span>
+            <span>{{c.homeTeam}} vs {{c.awayTeam}}</span>
+            <span>
+              <button type="button" class="btn btn-primary btn-sm details" (click)="displayDetails(c.id)">Details</button>
+           </span>
+          </ng-template>
+
+          <ng-template ngSwitchCase="team">
+            <span class="label"><mat-icon>people</mat-icon></span>
+            <span>{{c.homeTeam}} vs {{c.awayTeam}}</span>
+            <span>
+              <button type="button" class="btn btn-primary btn-sm details" (click)="displayDetails(c.id)">Details</button>
+           </span>
+          </ng-template>
+
+        </div>
+      </li>
+    </ul>
+</div>
