@@ -1,6 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Papa} from 'ngx-papaparse';
 import * as _ from 'lodash';
+import {ShareService} from './share.service';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +12,12 @@ export class AppComponent {
   title = 'fifa';
   isReadComplete = false;
   isUploadFileVisible = true;
+ // @Output()data = new EventEmitter();
   data = [];
 
-  constructor(private papa: Papa) {}
+  constructor(private papa: Papa, private shareService: ShareService) {
+  //  console.log(this.shareService.parse);
+  }
 
   parse(files: FileList): void {
     const file: File = files.item(0);
@@ -45,6 +49,7 @@ export class AppComponent {
       });
      // let test = _.find(this.data, function(o) { return o.stadium === 'Ekaterinburg Stadium'; });
     //  console.log('DATA', this.data);
+    //////////////  this.shareService.data = this.data;
     };
   }
 }

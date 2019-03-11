@@ -1,0 +1,12 @@
+<div *ngIf="data">
+<h4>{{data[0].stadium}}</h4>
+
+<ul >
+<li *ngFor="let team of data">
+<span>{{team.homeTeam}} vs {{team.awayTeam}}</span>
+<button type="button" class="btn btn-primary btn-sm details" (click)="displayDetails(team.id)">Game Details</button>
+
+</li>
+</ul>
+
+</div>

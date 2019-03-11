@@ -23,7 +23,8 @@
 
           <ng-template ngSwitchCase="stadium">
             <span class="label"><mat-icon>place</mat-icon></span>
-            <span class="stadium">{{c.stadium}}</span>
+            <!--(click)="displayStadiumResults(c.id)"-->
+            <span class="stadium"><a routerLink="/stadiums" (click)="displayStadiumResults(c.id)" >{{c.stadium}}</a></span>
             <span>{{c.homeTeam}} vs {{c.awayTeam}}</span>
             <span>
               <button type="button" class="btn btn-primary btn-sm details" (click)="displayDetails(c.id)">Details</button>
@@ -32,7 +33,11 @@
 
           <ng-template ngSwitchCase="team">
             <span class="label"><mat-icon>people</mat-icon></span>
-            <span>{{c.homeTeam}} vs {{c.awayTeam}}</span>
+            <span>
+              <a routerLink="/teams" (click)="displayTeamResults(c.id)" >{{c.homeTeam}}</a>
+              vs
+              <a routerLink="/teams" (click)="displayTeamResults(c.id)" >{{c.awayTeam}}</a>
+            </span>
             <span>
               <button type="button" class="btn btn-primary btn-sm details" (click)="displayDetails(c.id)">Details</button>
            </span>

@@ -1,6 +1,7 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig} from '@angular/material';
 import {GameDetailsComponent} from '../game-details/game-details.component';
+import {ShareService} from '../share.service';
 // import * as _ from "lodash";
 
 @Component({
@@ -19,11 +20,15 @@ export class SearchComponent implements OnInit {
  // displayedColumns: string[] = ['id', 'stadium', 'button'];
   // dataSource = this.data;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private shareService: ShareService ) { }
 
   ngOnInit() {
   //  console.log('DATA Child', this.data);
   }
+
+  // ngOnDestroy() {
+  //   console.log();
+  // }
 
   changeCriteria(field: string) {
     const namesMap = {
@@ -31,14 +36,11 @@ export class SearchComponent implements OnInit {
       stadium: 'Find by Stadium',
       team: 'Find by Team',
     };
-   // debugger;
     this.searchPlaceholder = namesMap[field];
     this.searchField = field;
-    console.log('FIELD', field);
   }
 
   displayDetails(id) {
-    console.log('ID', id);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = false;
@@ -54,6 +56,26 @@ export class SearchComponent implements OnInit {
 
   getGameDetails(id) {
     return this.data.find(game => game.id === id);
+  }
+
+  public displayStadiumResults(id) {
+    const stadiumName = this.data.find(stadium => stadium.id === id);
+    const resultsByStadium = this.data.filter(elem => elem.stadium.toLowerCase() === stadiumName.stadium.toLowerCase());
+ //   console.log('stadiumName', stadiumName.stadium.toLowerCase());
+ //   console.log('resultsByStadium', resultsByStadium);
+  //  return this.data = resultsByStadium;
+  //  this.shareService.doClick(); // = resultsByStadium;
+    this.shareService.changeData(resultsByStadium);
+  }
+
+  public displayTeamResults(id) {
+    const teamName = this.data.find(stadium => stadium.id === id);
+    debugger;
+  //  const resultsByStadium =
+      const homeTeam = this.data.filter(elem => elem.homeTeam.toLowerCase() === teamName.homeTeam.toLowerCase());
+      const awayTeam = this.data.filter(elem => elem.awayTeam.toLowerCase() === teamName.awayTeam.toLowerCase());
+      console.log('HT', homeTeam);
+   // this.shareService.changeData(resultsByStadium);
   }
 
 

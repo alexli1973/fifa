@@ -8,6 +8,8 @@ import { SearchComponent } from './search/search.component';
 import { DropdownDirective } from './directives/dropdown.directive';
 import {FormsModule} from '@angular/forms';
 
+import {Routes, RouterModule} from '@angular/router'
+
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {
@@ -19,6 +21,13 @@ import {
   MatProgressBarModule, MatTableModule, MatToolbarModule
 } from '@angular/material';
 import { GameDetailsComponent } from './game-details/game-details.component';
+import { StadiumsComponent } from './stadiums/stadiums.component';
+import { TeamsComponent } from './teams/teams.component';
+
+const appRoutes: Routes = [
+  {path: 'stadiums', component: StadiumsComponent},
+  {path: 'teams', component: TeamsComponent}
+];
 
 @NgModule({
   declarations: [
@@ -26,7 +35,9 @@ import { GameDetailsComponent } from './game-details/game-details.component';
     FilterPipe,
     SearchComponent,
     DropdownDirective,
-    GameDetailsComponent
+    GameDetailsComponent,
+    StadiumsComponent,
+    TeamsComponent
   ],
   imports: [
     BrowserModule,
@@ -44,8 +55,10 @@ import { GameDetailsComponent } from './game-details/game-details.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatTableModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule.forRoot(appRoutes)
   ],
+
   entryComponents: [GameDetailsComponent],
   providers: [],
   bootstrap: [AppComponent]
