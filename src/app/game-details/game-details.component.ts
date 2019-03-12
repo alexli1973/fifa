@@ -12,8 +12,8 @@ export class GameDetailsComponent implements OnInit {
 
   constructor(private dialogRef: MatDialogRef<GameDetailsComponent>,
               @Inject(MAT_DIALOG_DATA) data) {
-    this.game = data.game;
-    console.log('DATA from Game Det Comp', this.game); }
+      this.game = data.game;
+    }
 
   ngOnInit() {
 

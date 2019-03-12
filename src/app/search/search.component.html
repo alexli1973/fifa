@@ -26,21 +26,21 @@
             <!--(click)="displayStadiumResults(c.id)"-->
             <span class="stadium"><a routerLink="/stadiums" (click)="displayStadiumResults(c.id)" >{{c.stadium}}</a></span>
             <span>{{c.homeTeam}} vs {{c.awayTeam}}</span>
-            <span>
-              <button type="button" class="btn btn-primary btn-sm details" (click)="displayDetails(c.id)">Details</button>
-           </span>
+            <!--<span>-->
+              <!--<button type="button" class="btn btn-primary btn-sm details" (click)="displayDetails(c.id)">Details</button>-->
+           <!--</span>-->
           </ng-template>
 
           <ng-template ngSwitchCase="team">
             <span class="label"><mat-icon>people</mat-icon></span>
             <span>
-              <a routerLink="/teams" (click)="displayTeamResults(c.id)" >{{c.homeTeam}}</a>
+              <a routerLink="/teams" (click)="displayTeamResults(c.id, c.homeTeam)" >{{c.homeTeam}}</a>
               vs
-              <a routerLink="/teams" (click)="displayTeamResults(c.id)" >{{c.awayTeam}}</a>
+              <a routerLink="/teams" (click)="displayTeamResults(c.id, c.awayTeam)" >{{c.awayTeam}}</a>
             </span>
-            <span>
-              <button type="button" class="btn btn-primary btn-sm details" (click)="displayDetails(c.id)">Details</button>
-           </span>
+            <!--<span>-->
+              <!--<button type="button" class="btn btn-primary btn-sm details" (click)="displayDetails(c.id)">Details</button>-->
+           <!--</span>-->
           </ng-template>
 
         </div>

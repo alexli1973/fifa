@@ -1,0 +1,21 @@
+.team-result ul {
+  list-style: none;
+}
+
+.team-result {
+  margin-top: 10px;
+}
+
+button.details {
+  margin-left: 10px;
+}
+
+li {
+  padding-bottom: 10px;
+}
+
+h4{
+  font-size: 1.3rem;
+  color: #007bff;
+  margin: 10px 40px;
+}
